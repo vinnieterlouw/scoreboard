@@ -62,6 +62,18 @@ export default function Scoreboard() {
     set_players(new_players_array);
   };
 
+  const addPlayer = (name) => {
+    console.log("Let's add a new player with the name:", name);
+    set_players([
+      ...players,
+      {
+        id: Math.random(),
+        name,
+        score: 0,
+      },
+    ]);
+  };
+
   return (
     <div className="Scoreboard">
       <p>
@@ -86,7 +98,7 @@ export default function Scoreboard() {
           />
         ))}
       </ul>
-      <AddPlayerForm />
+      <AddPlayerForm addPlayer={addPlayer} />
     </div>
   );
 }
